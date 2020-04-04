@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>JATCustomBusinessEventAttribute</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+class JATCustomBusinessEventAttribute extends SysAttribute
+{
+    private str eventType;
+
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>new</Name>
+				<Source><![CDATA[
+    public void new(str _eventType)
+    {
+        super();
+        eventType	= _eventType;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>getEventType</Name>
+				<Source><![CDATA[
+    public str getEventType()
+    {
+        return eventType;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

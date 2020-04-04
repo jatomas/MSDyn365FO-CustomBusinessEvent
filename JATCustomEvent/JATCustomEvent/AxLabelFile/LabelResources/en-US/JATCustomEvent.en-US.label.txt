@@ -1,0 +1,5 @@
+﻿NewLabel0=Label files created on 04/04/2020 16:30:37 for label file Id JATCustomEvent and language en-US
+ ;Label file comment - see above label
+InvoiceEvent=Invoices interface
+InvoiceEventDesc=The business event is triggered when an invoice is posted through the Senior interface
+MessageId=Message Id

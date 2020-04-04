@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>JATBusinessEvent</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+[JATCustomBusinessEvent('Project.ERP.InvoiceCreated'),
+BusinessEvents(classStr(JATBusinessEventsContract),
+    "@JATCustomEvent:InvoiceEvent",
+    "@JATCustomEvent:InvoiceEventDesc",
+    ModuleAxapta::Customer)]
+public class JATBusinessEvent extends BusinessEventsBase
+{
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>buildContract</Name>
+				<Source><![CDATA[
+    // ...
+
+    /// <summary>
+    ///
+    /// </summary>
+    /// <returns></returns>
+    protected BusinessEventsContract buildContract()
+    {
+        BusinessEventsContract ret;
+
+
+        return ret;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

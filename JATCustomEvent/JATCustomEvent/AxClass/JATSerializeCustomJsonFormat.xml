@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>JATSerializeCustomJsonFormat</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+class JATSerializeCustomJsonFormat
+{
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>getSerializedCustomContract</Name>
+				<Source><![CDATA[
+    public static str getSerializedCustomContract(BusinessEventsId _businessEventId, EventTypeDescription _eventType, ClassName _businessEventContractClass, str _serializedContract)
+    {
+        JATCustomDataContract			customDataContract;
+        BusinessEventsContract			businessEventsContract;
+        str								customSerializedContract;
+       
+        // Payload
+        businessEventsContract		= FormJsonSerializer::deserializeObject(className2Id(_businessEventContractClass), _serializedContract);
+
+        // CustomContract
+        customDataContract			= JATCustomDataContract::construct();
+        customDataContract.parmId(businessEventsContract.parmEventId());
+        customDataContract.parmEventType(_eventType);
+        customDataContract.parmData(businessEventsContract);
+  
+        customSerializedContract	= FormJsonSerializer::serializeClass(customDataContract);
+
+        return customSerializedContract;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxLabelFile xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>JATCustomEvent_en-US</Name>
+	<LabelContentFileName>JATCustomEvent.en-US.label.txt</LabelContentFileName>
+	<LabelFileId>JATCustomEvent</LabelFileId>
+	<RelativeUriInModelStore>JATCustomEvent\JATCustomEvent\AxLabelFile\LabelResources\en-US\JATCustomEvent.en-US.label.txt</RelativeUriInModelStore>
+</AxLabelFile>

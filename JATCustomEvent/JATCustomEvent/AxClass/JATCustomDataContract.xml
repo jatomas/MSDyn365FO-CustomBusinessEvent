@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>JATCustomDataContract</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+[DataContract]
+class JATCustomDataContract
+{
+    private str					eventType;
+    private str					eventTime;
+    private str					id;
+    JATBusinessEventsContract	data;
+
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>parmId</Name>
+				<Source><![CDATA[
+    [DataMember('Id')]
+    public str parmId(str _id = id)
+    {
+        id	= _id;
+        return id;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmEventType</Name>
+				<Source><![CDATA[
+    [DataMember('EventType')]
+    public str parmEventType(str _eventType = eventType)
+    {
+        eventType	= _eventType;
+        return eventType;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmEventTime</Name>
+				<Source><![CDATA[
+    [DataMember('EventTime')]
+    public str parmEventTime(str _eventTime = eventTime)
+    {
+        eventTime	= _eventTime;
+        return eventTime;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmData</Name>
+				<Source><![CDATA[
+    [DataMember('data')]
+    public JATBusinessEventsContract parmData(JATBusinessEventsContract _data = data)
+    {
+        data	= _data;
+        return data;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>construct</Name>
+				<Source><![CDATA[
+    public static JATCustomDataContract construct()
+    {
+        JATCustomDataContract	customDataContract	= new JATCustomDataContract();
+        customDataContract.parmEventTime(customDataContract.getDateTimeStr());
+
+        return customDataContract;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>getDateTimeStr</Name>
+				<Source><![CDATA[
+    private str getDateTimeStr()
+    {
+        UtcDateTime	dateTimeNow	= DateTimeUtil::applyTimeZoneOffset(DateTimeUtil::utcNow(), DateTimeUtil::getCompanyTimeZone());
+        str			dateTimeStr	= strReplace(DateTimeUtil::toStr(dateTimeNow), ' ', 'T');
+
+        return dateTimeStr;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>new</Name>
+				<Source><![CDATA[
+    protected void new()
+    {
+
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

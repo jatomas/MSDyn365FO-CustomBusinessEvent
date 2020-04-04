@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>BusinessEventsCatalogHelperJATCustomEvent_Extension</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+[ExtensionOf(classStr(BusinessEventsCatalogHelper))]
+final class BusinessEventsCatalogHelperJATCustomEvent_Extension
+{
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>addCodeBusinessEvents</Name>
+				<Source><![CDATA[
+    public static void addCodeBusinessEvents()
+    {
+        BusinessEventsTable	businessEventsTable;
+
+        next addCodeBusinessEvents();
+  
+        Array customEvents	= new Array(Types::Integer);
+        customEvents		= DictClass::getAttributedClasses(classStr(JATCustomBusinessEventAttribute));
+
+        ttsbegin;
+
+        for (int i = 1; i <= customEvents.lastIndex(); i++)
+        {
+            SysDictClass					businessEventDictClass	= new SysDictClass(customEvents.value(i));
+            JATCustomBusinessEventAttribute	businessEventsAttribute = businessEventDictClass.getAttribute(classStr(JATCustomBusinessEventAttribute));
+            BusinessEventsId				businessEventId			= businessEventDictClass.name();
+            
+            select firstonly forupdate businessEventsTable
+                where businessEventsTable.BusinessEventId	== businessEventId;
+
+            if (businessEventsTable.RecId)
+            {
+                businessEventsTable.JATCustomEvent	= NoYes::Yes;
+                businessEventsTable.JATEventType	= businessEventsAttribute.getEventType();
+                businessEventsTable.update();
+            }
+        }
+
+        ttscommit;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

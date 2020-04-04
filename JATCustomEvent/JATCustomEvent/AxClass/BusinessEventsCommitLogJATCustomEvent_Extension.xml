@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>BusinessEventsCommitLogJATCustomEvent_Extension</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+[ExtensionOf(tableStr(BusinessEventsCommitLog))]
+final class BusinessEventsCommitLogJATCustomEvent_Extension
+{
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>insert</Name>
+				<Source><![CDATA[
+    public void insert()
+    {
+        BusinessEventsTable	businessEventsTable;
+
+        select firstonly JATCustomEvent, JATEventType, Contract from businessEventsTable
+            where businessEventsTable.BusinessEventId	== this.BusinessEventId;
+
+        if (businessEventsTable.JATCustomEvent)
+        {
+            this.SerializedContract	= JATSerializeCustomJsonFormat::getSerializedCustomContract(this.BusinessEventId, businessEventsTable.JATEventType, businessEventsTable.Contract, this.SerializedContract);
+        }
+
+        next insert();
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>
