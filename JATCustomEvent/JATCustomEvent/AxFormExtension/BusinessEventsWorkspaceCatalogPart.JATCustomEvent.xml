@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxFormExtension xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="Microsoft.Dynamics.AX.Metadata.V6">
+	<Name>BusinessEventsWorkspaceCatalogPart.JATCustomEvent</Name>
+	<ControlModifications />
+	<Controls>
+		<AxFormExtensionControl xmlns="">
+			<Name>Copyh0lbrhsg1</Name>
+			<FormControl xmlns=""
+				i:type="AxFormCommandButtonControl">
+				<Name>JATDownloadSchema</Name>
+				<AutoDeclaration>Yes</AutoDeclaration>
+				<Type>CommandButton</Type>
+				<FormControlExtension
+					i:nil="true" />
+				<NeedsRecord>Yes</NeedsRecord>
+				<NormalImage>Download</NormalImage>
+				<Style>Link</Style>
+				<Text>@BusinessEvents:BusinessEventsForm_DownloadEventSchema</Text>
+			</FormControl>
+			<Parent>DownloadSchemaButtonGroup</Parent>
+		</AxFormExtensionControl>
+	</Controls>
+	<DataSourceModifications />
+	<DataSourceReferences />
+	<DataSources />
+	<Parts />
+	<PropertyModifications />
+</AxFormExtension>

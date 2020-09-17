@@ -9,7 +9,7 @@ class JATCustomDataContract
     private str					eventType;
     private str					eventTime;
     private str					id;
-    JATBusinessEventsContract	data;
+    BusinessEventsContract  	data;
 
 }
 ]]></Declaration>
@@ -54,7 +54,7 @@ class JATCustomDataContract
 				<Name>parmData</Name>
 				<Source><![CDATA[
     [DataMember('data')]
-    public JATBusinessEventsContract parmData(JATBusinessEventsContract _data = data)
+    public BusinessEventsContract parmData(BusinessEventsContract _data = data)
     {
         data	= _data;
         return data;

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>BusinessEventsWorkspaceCatalogPart_BusinessEventsTableJATCustomEvent_Extension</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+[ExtensionOf(formDataSourceStr(BusinessEventsWorkspaceCatalogPart, BusinessEventsTable))]
+final class BusinessEventsworkspaceCatalogPart_BusinessEventsTableJATCustomEvent_Extension
+{
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>active</Name>
+				<Source><![CDATA[
+    public int active()
+    {
+        int ret;
+        
+        ret = next active();
+
+        BusinessEventsTable			businessEventsTable	= this.cursor();
+        FormRun						formRun				= this.formRun();
+        FormCommandButtonControl	downloadSchema		= formRun.control(formRun.controlId(formControlStr(BusinessEventsWorkspaceCatalogPart, DownloadSchema)));
+        FormCommandButtonControl	jatDownloadSchema	= formRun.control(formRun.controlId(formControlStr(BusinessEventsWorkspaceCatalogPart, JATDownloadSchema)));
+
+        downloadSchema.visible(businessEventsTable.JATCustomEvent == NoYes::No);
+        jatDownloadSchema.visible(businessEventsTable.JATCustomEvent == NoYes::Yes);
+
+        return ret;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>BusinessEventsWorkspaceCatalogPart_JATDownloadSchema_Extension</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+[ExtensionOf(formControlStr(BusinessEventsWorkspaceCatalogPart, JATDownloadSchema))]
+final class BusinessEventsWorkspaceCatalogPart_JATDownloadSchema_Extension
+{
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>clicked</Name>
+				<Source><![CDATA[
+    public void clicked()
+    {
+        FormRun				formRun				= this.formRun();
+        FormDataSource		formDataSource		= formRun.dataSource(tableStr(BusinessEventsTable));
+        BusinessEventsTable	businessEventTable	= formDataSource.cursor();
+        next clicked();
+
+        if (businessEventTable)
+        {
+            str fileName = strFmt("BusinessEventSchema_%1.txt", businessEventTable.BusinessEventId);
+            File::SendStringAsFileToUser(BusinessEventsCatalogHelper::axzGetJSONSchema(businessEventTable.Contract), fileName);
+        }
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

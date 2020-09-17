@@ -45,6 +45,20 @@ final class BusinessEventsCatalogHelperJATCustomEvent_Extension
 
 ]]></Source>
 			</Method>
+            <Method>
+				<Name>jatGetJSONSchema</Name>
+				<Source><![CDATA[
+    public static str jatGetJSONSchema(BusinessEventsContractEDT _businessEventsDataContract) 
+    {
+        Object							dataContract = new DictClass(className2Id(_businessEventsDataContract)).makeObject();
+        JATCustomDataContract customDC		= JATCustomDataContract::construct();
+		customDC.parmData(dataContract);
+
+        return FormJsonSerializer::serializeClass(customDC);
+    }
+
+]]></Source>
+			</Method>
 		</Methods>
 	</SourceCode>
 </AxClass>
