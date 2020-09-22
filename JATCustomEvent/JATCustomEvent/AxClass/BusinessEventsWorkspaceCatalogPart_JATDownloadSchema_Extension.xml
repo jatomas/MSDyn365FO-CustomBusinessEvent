@@ -22,7 +22,7 @@ final class BusinessEventsWorkspaceCatalogPart_JATDownloadSchema_Extension
         if (businessEventTable)
         {
             str fileName = strFmt("BusinessEventSchema_%1.txt", businessEventTable.BusinessEventId);
-            File::SendStringAsFileToUser(BusinessEventsCatalogHelper::axzGetJSONSchema(businessEventTable.Contract), fileName);
+            File::SendStringAsFileToUser(BusinessEventsCatalogHelper::jatGetJSONSchema(businessEventTable.Contract), fileName);
         }
     }
 
